@@ -1,3 +1,5 @@
+unsetopt BEEP
+
 autoload -Uz colors && colors
 
 autoload -Uz compinit && compinit

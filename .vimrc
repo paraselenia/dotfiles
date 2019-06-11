@@ -4,6 +4,7 @@ let $LANG='ja_JP.UTF-8'
 set fileencodings=utf-8,iso-2022-jp,cp932,euc-jp,sjis
 set encoding=utf-8
 set fileformats=unix,dos,mac
+set belloff=all
 
 if &compatible
   set nocompatible
@@ -184,27 +185,40 @@ nmap ,u [denite]
 call denite#custom#option('default', 'prompt', '>')
 call denite#custom#var('grep', 'command', ['ag'])
 call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-call denite#custom#map('normal', '<C-l>', '<CR>')
-call denite#custom#map('normal', '<C-h>', '<denite:move_up_path>', 'noremap')
-call denite#custom#map('normal', '<C-q>', '<Esc>')
 
-augroup denite
-  au! denite
-  " Open window splitted horizontal
-  au Filetype denite nnoremap <silent><buffer> <expr> <C-j> denite#do_action('below')
-  au FileType denite inoremap <silent><buffer> <expr> <C-j> denite#do_action('below')
-  " Open window splitted vertical
-  au FileType denite nnoremap <silent><buffer> <expr> <C-v> denite#do_action('right')
-  au FileType denite inoremap <silent><buffer> <expr> <C-v> denite#do_action('right')
-  au BufEnter denite <ESC>
-augroup end
+
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> t denite#do_map('do_action', 'tabopen')
+  nnoremap <silent><buffer><expr> <Space> denite#do_map('toggle_select').'j'
+
+  nnoremap <silent><buffer><expr> <C-l> denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> <C-h> denite#do_map('move_up_path', 'noremap')
+  nnoremap <silent><buffer><expr> <C-j> denite#do_map('do_action', 'split')
+  inoremap <silent><buffer><expr> <C-j> denite#do_map('do_action', 'split')
+  nnoremap <silent><buffer><expr> <C-v> denite#do_map('do_action', 'vsplit')
+  inoremap <silent><buffer><expr> <C-v> denite#do_map('do_action', 'vsplit')
+endfunction
+
+autocmd FileType denite-filter call s:denite_filter_my_settings()
+function! s:denite_filter_my_settings() abort
+  imap <silent><buffer> <CR> <Plug>(denite_filter_quit)
+  imap <silent><buffer> <ESC> <Plug>(denite_filter_quit)
+endfunction
+
+autocmd BufEnter denite <ESC>
 
 " Buffer
-nnoremap <silent> [denite]b :<C-u>Denite buffer -mode=normal -direction=top<CR>
+nnoremap <silent> [denite]b :<C-u>Denite buffer -direction=top<CR>
 " File
-nnoremap <silent> [denite]f :<C-u>DeniteBufferDir -buffer-name=files -mode=normal -direction=top file<CR>
+nnoremap <silent> [denite]f :<C-u>DeniteBufferDir -buffer-name=files -direction=top file<CR>
 " Buffer, Recently used file
-nnoremap <silent> [denite]u :<C-u>Denite buffer file_mru -mode=normal -direction=top<CR>
+nnoremap <silent> [denite]u :<C-u>Denite buffer file_mru -direction=top<CR>
 " }}}
 
 " Restart.vim {{{
