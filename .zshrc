@@ -23,6 +23,11 @@ if [ -e /usr/local/share/git-core/contrib/diff-highlight ]; then
   export PATH=/usr/local/share/git-core/contrib/diff-highlight:$PATH
 fi
 
+if [ -e /usr/local/bin/src-hilite-lesspipe.sh ]; then
+  export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
+  export LESS="-gj10 --no-init --quit-if-one-screen --RAW-CONTROL-CHARS"
+fi
+
 HISTFILE=~/.zsh-history
 HISTSIZE=1000
 SAVEHIST=1000
