@@ -306,6 +306,7 @@ let g:ale_echo_msg_error_str = '✗'
 let g:ale_echo_msg_warning_str = '⚠'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%%/code%]'
 let g:ale_disable_lsp = 1
+let g:ale_ruby_rubocop_executable = 'bundle'
 
 nmap <silent> [ale]k <Plug>(ale_previous_wrap)
 nmap <silent> [ale]j <Plug>(ale_next_wrap)
