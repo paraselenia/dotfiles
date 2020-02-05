@@ -197,6 +197,7 @@ augroup end
 nmap ,u [denite]
 
 call denite#custom#option('default', 'prompt', '>')
+call denite#custom#option('default', 'highlight_matched_char', 'IncSearch')
 call denite#custom#var('grep', 'command', ['ag'])
 call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 
