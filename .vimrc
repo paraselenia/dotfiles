@@ -315,6 +315,7 @@ nmap <silent> [ale]j <Plug>(ale_next_wrap)
 let g:ale_linters = {
 \  'scss': ['stylelint'],
 \  'vue': ['stylelint', 'eslint'],
+\  'rust': [],
 \}
 
 let g:ale_fixers = {
@@ -328,6 +329,7 @@ let g:ale_fixers = {
 \  'json': ['prettier'],
 \  'php': ['prettier'],
 \  'ruby': ['rubocop'],
+\  'rust': ['rustfmt'],
 \}
 "}}}
 
