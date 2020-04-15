@@ -81,6 +81,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('scrooloose/nerdcommenter.git')
   call dein#add('thinca/vim-prettyprint.git')
   call dein#add('kannokanno/previm.git')
+  call dein#add('airblade/vim-rooter.git')
   " Syntax
   call dein#add('othree/html5.vim.git', {
       \ 'on_ft': ['html']
@@ -462,6 +463,17 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+"}}}
+
+" Rooter {{{
+let g:rooter_change_directory_for_non_project_files = 'home'
+let g:rooter_patterns = ['.git/']
+let g:rooter_use_lcd = 1
+let g:rooter_silent_chdir = 1
+augroup rooter_settings
+  autocmd!
+  autocmd TabNew * nested :lcd ~
+augroup end
 "}}}
 
 " Emmet.vim {{{
