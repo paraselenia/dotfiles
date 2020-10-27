@@ -28,6 +28,14 @@ if [ -e /usr/local/bin/src-hilite-lesspipe.sh ]; then
   export LESS="-gj10 --no-init --quit-if-one-screen --RAW-CONTROL-CHARS"
 fi
 
+if [ -e /usr/local/opt/coreutils/libexec/gnubin ]; then
+  export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+fi
+
+if [ -e /usr/local/opt/gnu-sed/libexec/gnubin ]; then
+  export PATH=/usr/local/opt/gnu-sed/libexec/gnubin:$PATH
+fi
+
 HISTFILE=~/.zsh-history
 HISTSIZE=1000
 SAVEHIST=1000

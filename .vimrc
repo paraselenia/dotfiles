@@ -467,7 +467,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " Rooter {{{
 let g:rooter_change_directory_for_non_project_files = 'home'
 let g:rooter_patterns = ['.git/']
-let g:rooter_use_lcd = 1
+let g:rooter_cd_cmd="lcd"
 let g:rooter_silent_chdir = 1
 augroup rooter_settings
   autocmd!
