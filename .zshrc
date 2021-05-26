@@ -32,6 +32,10 @@ if [ -e /usr/local/opt/gnu-sed/libexec/gnubin ]; then
   export PATH=/usr/local/opt/gnu-sed/libexec/gnubin:$PATH
 fi
 
+if [ -e $HOME/go/bin ]; then
+  export PATH=$HOME/go/bin:$PATH
+fi
+
 HISTFILE=~/.zsh-history
 HISTSIZE=1000
 SAVEHIST=1000

@@ -13,5 +13,6 @@
   "vetur.format.defaultFormatter.html": "none",
   "vetur.format.defaultFormatter.css": "none",
   "vetur.format.defaultFormatter.scss": "none",
-  "vetur.experimental.templateInterpolationService": true
+  "vetur.experimental.templateInterpolationService": true,
+  "java.import.maven.enabled": true
 }

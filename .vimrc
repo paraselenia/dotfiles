@@ -41,6 +41,7 @@ set hlsearch
 if &compatible
   set nocompatible
 endif
+let g:coc_force_debug = 1
 
 " dein.vim {{{
 let s:dein_dir = expand('~/.cache/dein')
@@ -227,8 +228,8 @@ function! s:denite_my_settings() abort
 endfunction
 
 function! s:denite_filter_my_settings() abort
-  imap <silent><buffer> <CR> <Plug>(denite_filter_quit)
-  imap <silent><buffer> <ESC> <Plug>(denite_filter_quit)
+  imap <silent><buffer> <ESC> <Plug>(denite_filter_update)
+  imap <silent><buffer> <CR> <ESC><CR>
 endfunction
 
 " Buffer
@@ -319,12 +320,14 @@ let g:ale_linters = {
 \  'scss': ['stylelint'],
 \  'vue': ['stylelint', 'eslint'],
 \  'rust': [],
+\  'go': ['golangci-lint'],
 \}
 
 let g:ale_fixers = {
 \  '*': ['remove_trailing_lines', 'trim_whitespace'],
 \  'javascript': ['prettier', 'eslint'],
 \  'typescript': ['prettier', 'eslint'],
+\  'typescriptreact': ['prettier', 'eslint'],
 \  'vue': ['stylelint', 'prettier', 'eslint'],
 \  'scss': ['stylelint', 'prettier'],
 \  'css': ['stylelint', 'prettier'],
@@ -333,6 +336,7 @@ let g:ale_fixers = {
 \  'php': ['prettier'],
 \  'ruby': ['rubocop'],
 \  'rust': ['rustfmt'],
+\  'go': ['gofmt'],
 \}
 "}}}
 
@@ -583,6 +587,12 @@ augroup ft
 
   " git commit
   autocmd FileType gitcommit :set formatoptions=q
+
+  " go
+  autocmd FileType go setlocal noexpandtab tabstop=4 shiftwidth=4
+
+  " java
+  au FileType java setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 augroup end
 "}}}
 
