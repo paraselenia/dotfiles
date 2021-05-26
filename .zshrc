@@ -12,14 +12,10 @@ export LANG=ja_JP.UTF-8
 
 export PATH="/usr/local/bin:$PATH"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-if [ -f ~/.nodebrew/nodebrew ]; then
-  export PATH=$HOME/.nodebrew/current/bin:$PATH
-fi
+if which nodebrew > /dev/null; then export PATH=$HOME/.nodebrew/current/bin:$PATH; fi
 if which direnv > /dev/null; then eval "$(direnv hook zsh)"; fi
 
-if which direnv > /dev/null; then eval "$(direnv hook zsh)"; fi
-
-if [ -e /usr/local/share/git-core/contrib/diff-highlight ]; then
+if [ -x diff-highlight ]; then
   export PATH=/usr/local/share/git-core/contrib/diff-highlight:$PATH
 fi
 
