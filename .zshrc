@@ -11,6 +11,7 @@ autoload zmv
 export LANG=ja_JP.UTF-8
 
 export PATH="/usr/local/bin:$PATH"
+
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 if which nodebrew > /dev/null; then export PATH=$HOME/.nodebrew/current/bin:$PATH; fi
 if which direnv > /dev/null; then eval "$(direnv hook zsh)"; fi
@@ -35,6 +36,12 @@ fi
 if [ -e $HOME/go/bin ]; then
   export PATH=$HOME/go/bin:$PATH
 fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc' ]; then . '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc' ]; then . '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'; fi
 
 HISTFILE=~/.zsh-history
 HISTSIZE=1000

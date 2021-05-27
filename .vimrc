@@ -111,6 +111,8 @@ if dein#load_state(s:dein_dir)
   " Color scheme
   call dein#add('joshdick/onedark.vim')
 
+  cal dein#add('peitalin/vim-jsx-typescript')
+
   call dein#end()
   call dein#save_state()
 endif
