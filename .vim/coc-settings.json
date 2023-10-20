@@ -8,11 +8,18 @@
   "diagnostic.hintSign": "!!",
   "typescript.format.enabled": false,
   "javascript.format.enabled": false,
+  "vetur.format.enable": false,
   "vetur.format.defaultFormatter.js": "none",
   "vetur.format.defaultFormatter.ts": "none",
   "vetur.format.defaultFormatter.html": "none",
   "vetur.format.defaultFormatter.css": "none",
   "vetur.format.defaultFormatter.scss": "none",
   "vetur.experimental.templateInterpolationService": true,
-  "java.import.maven.enabled": true
+  "vetur.validation.templateProps": true,
+  "vetur.validation.template": true,
+  "vetur.ignoreProjectWarning": true,
+  "java.import.maven.enabled": true,
+  "rust-analyzer.server.extraEnv": {
+    "CARGO_NET_GIT_FETCH_WITH_CLI": "true"
+  }
 }
