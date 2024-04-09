@@ -1,5 +1,7 @@
 unsetopt BEEP
 
+typeset -U PATH
+
 autoload -Uz colors && colors
 
 autoload -Uz compinit && compinit
@@ -15,6 +17,8 @@ export PATH="/usr/local/bin:$PATH"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 if which nodebrew > /dev/null; then export PATH=$HOME/.nodebrew/current/bin:$PATH; fi
 if which direnv > /dev/null; then eval "$(direnv hook zsh)"; fi
+
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 if [ -x diff-highlight ]; then
   export PATH=/usr/local/share/git-core/contrib/diff-highlight:$PATH
@@ -35,6 +39,14 @@ fi
 
 if [ -e $HOME/go/bin ]; then
   export PATH=$HOME/go/bin:$PATH
+fi
+
+if [ -e $HOME/.cargo/bin ]; then
+  export PATH=$HOME/.cargo/bin:$PATH
+fi
+
+if [ -e $HOME/.orbstack/bin ]; then
+  export PATH=$HOME/.orbstack/bin:$PATH
 fi
 
 # The next line updates PATH for the Google Cloud SDK.
