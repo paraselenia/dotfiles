@@ -11,6 +11,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 autoload zmv
 
 export LANG=ja_JP.UTF-8
+export GPG_TTY=$TTY
 
 export PATH="/usr/local/bin:$PATH"
 
@@ -20,20 +21,20 @@ if which direnv > /dev/null; then eval "$(direnv hook zsh)"; fi
 
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
-if [ -x diff-highlight ]; then
-  export PATH=/usr/local/share/git-core/contrib/diff-highlight:$PATH
+if [ -x "$(brew --prefix git)/share/git-core/contrib/diff-highlight/diff-highlight" ]; then
+  export PATH=$(brew --prefix git)/share/git-core/contrib/diff-highlight:$PATH
 fi
 
-if [ -e /usr/local/bin/src-hilite-lesspipe.sh ]; then
-  export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
+if [ -e "$(brew --prefix)/bin/src-hilite-lesspipe.sh" ]; then
+  export LESSOPEN="| $(brew --prefix)/bin/src-hilite-lesspipe.sh %s"
   export LESS="-gj10 --no-init --quit-if-one-screen --RAW-CONTROL-CHARS"
 fi
 
-if [ -e /usr/local/opt/coreutils/libexec/gnubin ]; then
-  export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+if [ -e "$(brew --prefix)/opt/coreutils/libexec/gnubin" ]; then
+  export PATH=$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH
 fi
 
-if [ -e /usr/local/opt/gnu-sed/libexec/gnubin ]; then
+if [ -e "$(brew --prefix)/opt/gnu-sed/libexec/gnubin" ]; then
   export PATH=/usr/local/opt/gnu-sed/libexec/gnubin:$PATH
 fi
 
@@ -50,12 +51,19 @@ if [ -e $HOME/.orbstack/bin ]; then
 fi
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc' ]; then . '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc" ]; then
+  source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc' ]; then . '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc" ]; then
+  source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+fi
 
-HISTFILE=~/.zsh-history
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
+HISTFILE=$HOME/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
 setopt extended_history
