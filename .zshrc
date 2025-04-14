@@ -13,6 +13,8 @@ autoload zmv
 export LANG=ja_JP.UTF-8
 export GPG_TTY=$TTY
 
+[[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path zsh)"
+
 export PATH="/usr/local/bin:$PATH"
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
