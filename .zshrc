@@ -62,9 +62,6 @@ if [ -f "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc" ]; then
   source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 fi
 
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
@@ -141,3 +138,4 @@ function _git_unpushed() {
 
 PROMPT="%F{056}[%{$reset_color%}%~%F{056}]%1(v|%F{184}[%1v]|)
 %F{032}%n@%m %F{198}%(!.#.») %{$reset_color%}"
+eval "$(mise activate zsh)"
