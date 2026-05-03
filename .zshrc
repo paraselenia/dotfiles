@@ -81,61 +81,6 @@ setopt list_packed
 
 alias ls="ls -G"
 alias zmv='noglob zmv -W'
-alias javac="javac -J-Dfile.encoding=UTF-8"
-alias java="java -Dfile.encoding=UTF-8"
-
-#autoload -Uz add-zsh-hook
-#
-#autoload -Uz vcs_info
-#
-#zstyle ':vcs_info:*' enable git svn hg bzr
-#zstyle ':vcs_info:*' formats '%s:%b'
-#zstyle ':vcs_info:*' actionformats '%s:%b|%a'
-#zstyle ':vcs_info:(svn|bzr):*' branchformat '%b:r%r'
-#zstyle ':vcs_info:bzr:*' use-simple true
-#
-#autoload -Uz is-at-least
-#if is-at-least 4.3.10; then
-#  zstyle ':vcs_info:git:*' check-for-changes true
-#  zstyle ':vcs_info:git:*' stagedstr "+"
-#  zstyle ':vcs_info:git:*' unstagedstr "-"
-#  zstyle ':vcs_info:git:*' formats '%s:%b %c%u'
-#  zstyle ':vcs_info:git:*' actionformats '%s:%b|%a %c%u'
-#fi
-#
-#function _update_vcs_info_msg() {
-#    psvar=()
-#    LANG=en_US.UTF-8 vcs_info
-#    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]=`echo "$vcs_info_msg_0_"$(_git_untracked)$(_git_unpushed) | tr -d " "`
-#}
-#add-zsh-hook precmd _update_vcs_info_msg
-#
-#function _git_untracked() {
-#  if command git status --porcelain 2> /dev/null \
-#    | awk '{print $1}' \
-#    | command grep -F '??' > /dev/null 2>&1 ; then
-#
-#    printf '?'
-#  fi
-#}
-#
-#function _git_unpushed() {
-#  if [[ $(git symbolic-ref --short HEAD) != "master" ]]; then
-#    return 0
-#  fi
-#
-#  local ahead
-#  ahead=$(git rev-list origin/master..master 2>/dev/null \
-#    | wc -l \
-#    | tr -d ' ')
-#
-#  if [[ "$ahead" -gt 0 ]]; then
-#    printf "(*$ahead)"
-#  fi
-#}
-#
-#PROMPT="%F{056}[%{$reset_color%}%~%F{056}]%1(v|%F{184}[%1v]|)
-#%F{032}%n@%m %F{198}%(!.#.») %{$reset_color%}"
 
 if builtin command -v mise > /dev/null; then
   eval "$(mise activate zsh)"
