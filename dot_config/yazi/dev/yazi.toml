@@ -1,0 +1,14 @@
+[mgr]
+ratio = [1, 7, 0]
+show_hidden = true
+
+[opener]
+edit = [
+  { run = "nvim --server \"/tmp/nvim/sockets/$ZELLIJ_SESSION_NAME\" --remote-expr \"execute('tab drop ' . fnamemodify('%s', ':p'))\"", desc = "Open in nvim (tab drop)" },
+]
+
+[open]
+rules = [
+  { mime = "text/*", use = "edit" },
+  { url = "*.json", use = "edit" },
+]

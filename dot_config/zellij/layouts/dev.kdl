@@ -1,0 +1,47 @@
+layout {
+  cwd ""
+
+  pane size=1 borderless=true {
+      plugin location="tab-bar"
+  }
+  
+  pane split_direction="vertical" {
+    pane size="22%" {
+      name "yazi"
+      command "sh"
+      args "-lc" "YAZI_CONFIG_HOME=\"$HOME/.config/yazi/dev\" exec yazi"
+    }
+
+    pane size="53%" split_direction="horizontal" {
+      //pane size="75%" {
+      //  name "nvim"
+      //  command "nvim"
+      //  args "--listen" "/tmp/nvimsocket"
+      //}
+
+      pane size="75%" {
+        name "nvim"
+        command "sh"
+        args "-lc" "nvim --listen \"/tmp/nvim/sockets/$ZELLIJ_SESSION_NAME\""
+      }
+
+      pane {
+        name "terminal"
+      }
+    }
+
+    pane size="25%" stacked=true {
+      pane {
+        expanded true
+        command "claude"
+      }
+      pane {
+        name "terminal"
+      }
+    }
+  }
+
+  pane size=1 borderless=true {
+      plugin location="status-bar"
+  }
+}

@@ -1,0 +1,5 @@
+README.md
+.gitignore
+**/*.bak
+**/*.bak.*
+**/.DS_Store
