@@ -1,0 +1,21 @@
+# This is the configuration file for Ghostty.
+
+# Working directory
+working-directory = home
+window-inherit-working-directory = false
+
+# Window
+window-height = 40
+window-width = 120
+window-padding-x = 10
+window-padding-y = 10
+
+# Font Settings
+font-family = 'HackGen35 Console NF'
+font-feature = "-calt"
+font-feature = "-dlig"
+font-feature = "-liga"
+font-size = 16
+
+# Theme
+theme = TokyoNight Moon
