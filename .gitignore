@@ -3,3 +3,4 @@
 !.vim/coc-settings.json
 **/*.bak
 **/*.bak.*
+/dot_config/nvim/lazy-lock.json
