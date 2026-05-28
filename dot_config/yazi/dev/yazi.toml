@@ -4,7 +4,7 @@ show_hidden = true
 
 [opener]
 edit = [
-  { run = "nvim --server \"/tmp/nvim/sockets/$ZELLIJ_SESSION_NAME\" --remote-expr \"execute('tab drop ' . fnamemodify('%s', ':p'))\"", desc = "Open in nvim (tab drop)" },
+  { run = 'nvim --server "/tmp/nvim-socket-$ZELLIJ_SESSION_NAME" --remote-expr "luaeval(\"Yazi.open(_A)\", \"$1\")"', desc = "Open in nvim" },
 ]
 
 [open]

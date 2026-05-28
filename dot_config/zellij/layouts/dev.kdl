@@ -22,7 +22,7 @@ layout {
       pane size="75%" {
         name "nvim"
         command "sh"
-        args "-lc" "nvim --listen \"/tmp/nvim/sockets/$ZELLIJ_SESSION_NAME\""
+        args "-lc" "nvim --listen \"/tmp/nvim-socket-$ZELLIJ_SESSION_NAME\""
       }
 
       pane {
