@@ -11,4 +11,5 @@ edit = [
 rules = [
   { mime = "text/*", use = "edit" },
   { url = "*.json", use = "edit" },
+  { url = "*.jsoc", use = "edit" },
 ]
