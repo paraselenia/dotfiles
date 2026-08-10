@@ -4,3 +4,4 @@
 
 vim.opt.swapfile = false
 vim.opt.spelllang = { "en", "cjk" }
+vim.g.lazyvim_prettier_needs_config = true
